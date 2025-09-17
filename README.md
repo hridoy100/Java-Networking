@@ -36,12 +36,17 @@ This repository contains a collection of simple Java networking projects.
 
 Here's a list of the main project folders in this repository:
 
-*   [ChatApp](https://github.com/hridoy100/Java-Networking/tree/master/ChatApp) - A multi-client chat application.
+*   [ChatApp](https://github.com/hridoy100/Java-Networking/tree/master/ChatApp)
+    *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/ChatApp/improved_implementation) - A multi-client chat application with improved code and comments.
 *   [docs](https://github.com/hridoy100/Java-Networking/tree/master/docs) - Documentation and GitHub Pages website for the project.
-*   [reader_writer_thread](https://github.com/hridoy100/Java-Networking/tree/master/reader_writer_thread) - Demonstrates client-server communication using separate reader and writer threads.
-*   [simple_client_server_using_threading](https://github.com/hridoy100/Java-Networking/tree/master/simple_client_server_using_threading) - A simple client-server application with multithreading.
-*   [simpleclient_server_without_thread](https://github.com/hridoy100/Java-Networking/tree/master/simpleclient_server_without_thread) - A basic client-server application without multithreading.
-*   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/Threading) - Examples demonstrating various Java threading concepts.
+*   [reader_writer_thread](https://github.com/hridoy100/Java-Networking/tree/master/reader_writer_thread)
+    *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/reader_writer_thread/improved_implementation) - Demonstrates client-server communication using separate reader and writer threads with improved code and comments.
+*   [simple_client_server_using_threading](https://github.com/hridoy100/Java-Networking/tree/master/simple_client_server_using_threading)
+    *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/simple_client_server_using_threading/improved_implementation) - A simple client-server application with multithreading with improved code and comments.
+*   [simpleclient_server_without_thread](https://github.com/hridoy100/Java-Networking/tree/master/simpleclient_server_without_thread)
+    *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/simpleclient_server_without_thread/improved_implementation) - A basic client-server application without multithreading with improved code and comments.
+*   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/Threading)
+    *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/Threading/improved_implementation) - Examples demonstrating various Java threading concepts with improved code and comments.
 
 ## Projects
 
