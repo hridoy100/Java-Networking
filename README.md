@@ -32,6 +32,17 @@ _______.___________.    ___      .______
 
 This repository contains a collection of simple Java networking projects.
 
+## Project Folders
+
+Here's a list of the main project folders in this repository:
+
+*   [ChatApp](./ChatApp) - A multi-client chat application.
+*   [docs](./docs) - Documentation and GitHub Pages website for the project.
+*   [reader_writer_thread](./reader_writer_thread) - Demonstrates client-server communication using separate reader and writer threads.
+*   [simple_client_server_using_threading](./simple_client_server_using_threading) - A simple client-server application with multithreading.
+*   [simpleclient_server_without_thread](./simpleclient_server_without_thread) - A basic client-server application without multithreading.
+*   [Threading](./Threading) - Examples demonstrating various Java threading concepts.
+
 ## Projects
 
 ### Simple Client-Server without Thread
@@ -147,6 +158,10 @@ This project is a multi-client chat application that allows users to connect to 
     ```
 4.  **Interact with the application:**
     Enter a username and start sending messages to other users. You can use the `list` command to see the list of connected users.
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions, improvements, or bug reports, please open an issue on GitHub.
 
 ## Further Improvements
 
