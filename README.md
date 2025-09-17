@@ -32,6 +32,14 @@ _______.___________.    ___      .______
 
 This repository contains a collection of simple Java networking projects.
 
+## **🚀 Contributing**
+
+**Contributions are highly encouraged!** If you have any suggestions, improvements, or bug reports, please feel free to open an issue or submit a pull request on GitHub. Your input helps make this project better!
+
+## Acknowledgements
+
+Acknowledging my BUET CSE course teacher, **(Professor Rifat Shahriyar)[https://rifatshahriyar.github.io/]** for his invaluable teaching and guidance.
+
 ## Project Folders
 
 Here's a list of the main project folders in this repository:
@@ -164,9 +172,7 @@ This project is a multi-client chat application that allows users to connect to 
 4.  **Interact with the application:**
     Enter a username and start sending messages to other users. You can use the `list` command to see the list of connected users.
 
-## Contributing
 
-Contributions are welcome! If you have any suggestions, improvements, or bug reports, please open an issue on GitHub.
 
 ## Further Improvements
 
@@ -177,7 +183,3 @@ Here are some suggestions for further improvements to this repository:
 *   **Refactor the code:** The code in some of the projects could be refactored for clarity and efficiency. For example, the `ChatApp` project could be refactored to use a more object-oriented design.
 *   **Add comments:** The code is not well-commented. Adding comments would make it easier to understand the code and its functionality.
 *   **Use a logging framework:** The current projects use `System.out.println` for logging. Consider using a logging framework like [Log4j](https://logging.apache.org/log4j/2.x/) or [SLF4J](http://www.slf4j.org/) to provide more flexible and configurable logging.
-
-## Acknowledgements
-
-A special thanks to **Professor Rifat Shahriyar**, my course teacher, ([https://rifatshahriyar.github.io/](https://rifatshahriyar.github.io/)) for his invaluable teaching and guidance to this project.
