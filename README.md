@@ -177,3 +177,7 @@ Here are some suggestions for further improvements to this repository:
 *   **Refactor the code:** The code in some of the projects could be refactored for clarity and efficiency. For example, the `ChatApp` project could be refactored to use a more object-oriented design.
 *   **Add comments:** The code is not well-commented. Adding comments would make it easier to understand the code and its functionality.
 *   **Use a logging framework:** The current projects use `System.out.println` for logging. Consider using a logging framework like [Log4j](https://logging.apache.org/log4j/2.x/) or [SLF4J](http://www.slf4j.org/) to provide more flexible and configurable logging.
+
+## Acknowledgements
+
+A special thanks to **[Rifat Shahriyar](https://rifatshahriyar.github.io/)** for his invaluable contributions and guidance to this project.
