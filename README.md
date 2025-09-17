@@ -32,7 +32,7 @@ This repository contains a collection of simple Java networking projects.
 
 ## Acknowledgements
 
-Acknowledging my BUET CSE course teacher, (Professor Rifat Shahriyar)[https://rifatshahriyar.github.io/] for his invaluable teaching and guidance.
+Acknowledging my BUET CSE course teacher, [Professor Rifat Shahriyar](https://rifatshahriyar.github.io) for his invaluable teaching and guidance.
 
 ## Project Folders
 
