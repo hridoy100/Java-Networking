@@ -180,4 +180,4 @@ Here are some suggestions for further improvements to this repository:
 
 ## Acknowledgements
 
-A special thanks to **[Rifat Shahriyar](https://rifatshahriyar.github.io/)** for his invaluable contributions and guidance to this project.
+A special thanks to **Professor Rifat Shahriyar**, my course teacher, ([https://rifatshahriyar.github.io/](https://rifatshahriyar.github.io/)) for his invaluable teaching and guidance to this project.
