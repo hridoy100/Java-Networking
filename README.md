@@ -36,12 +36,12 @@ This repository contains a collection of simple Java networking projects.
 
 Here's a list of the main project folders in this repository:
 
-*   [ChatApp](./ChatApp) - A multi-client chat application.
-*   [docs](./docs) - Documentation and GitHub Pages website for the project.
-*   [reader_writer_thread](./reader_writer_thread) - Demonstrates client-server communication using separate reader and writer threads.
-*   [simple_client_server_using_threading](./simple_client_server_using_threading) - A simple client-server application with multithreading.
-*   [simpleclient_server_without_thread](./simpleclient_server_without_thread) - A basic client-server application without multithreading.
-*   [Threading](./Threading) - Examples demonstrating various Java threading concepts.
+*   [ChatApp](https://github.com/hridoy100/Java-Networking/tree/master/ChatApp) - A multi-client chat application.
+*   [docs](https://github.com/hridoy100/Java-Networking/tree/master/docs) - Documentation and GitHub Pages website for the project.
+*   [reader_writer_thread](https://github.com/hridoy100/Java-Networking/tree/master/reader_writer_thread) - Demonstrates client-server communication using separate reader and writer threads.
+*   [simple_client_server_using_threading](https://github.com/hridoy100/Java-Networking/tree/master/simple_client_server_using_threading) - A simple client-server application with multithreading.
+*   [simpleclient_server_without_thread](https://github.com/hridoy100/Java-Networking/tree/master/simpleclient_server_without_thread) - A basic client-server application without multithreading.
+*   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/Threading) - Examples demonstrating various Java threading concepts.
 
 ## Projects
 
