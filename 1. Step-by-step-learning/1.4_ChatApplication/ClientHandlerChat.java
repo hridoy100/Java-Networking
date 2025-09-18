@@ -3,33 +3,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * ClientHandlerChat.java
  * This class handles communication with a single chat client. It reads messages from its client
- * and broadcasts them to all other connected clients in the chat room.
+ * and forwards them to a specific recipient based on the recipient's name.
  *
  * Design Principles:
  * - **Modularity:** Encapsulates client-specific chat logic.
  * - **Concurrency:** Implements `Runnable` to allow each client to be handled in a separate thread.
  * - **Resource Management:** Ensures proper closing of client-specific sockets and streams.
- * - **Broadcasting:** Coordinates with the `ChatServer` to send messages to all participants.
- * - **Robustness:** Handles client disconnections gracefully.
+ * - **Direct Messaging:** Facilitates one-to-one communication between clients via the server.
+ * - **Robustness:** Handles client disconnections and invalid recipient names gracefully.
  */
 public class ClientHandlerChat implements Runnable {
     private Socket clientSocket;
     private BufferedReader in;
     private PrintWriter out;
     private String clientName;
-    private List<ClientHandlerChat> clientHandlers; // Reference to all connected clients
+    private ConcurrentHashMap<String, ClientHandlerChat> clientHandlers; // Reference to all connected clients
 
     /**
      * Constructor for ClientHandlerChat.
      * @param socket The client socket connected to this handler.
-     * @param clientHandlers A list of all active client handlers in the chat server.
+     * @param clientHandlers A map of all active client handlers in the chat server (name -> handler).
      */
-    public ClientHandlerChat(Socket socket, List<ClientHandlerChat> clientHandlers) {
+    public ClientHandlerChat(Socket socket, ConcurrentHashMap<String, ClientHandlerChat> clientHandlers) {
         this.clientSocket = socket;
         this.clientHandlers = clientHandlers;
     }
@@ -52,34 +52,61 @@ public class ClientHandlerChat implements Runnable {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-            // 1. Ask client for their name and set it
-            out.println("SERVER: Enter your name:");
-            clientName = in.readLine();
-            if (clientName == null || clientName.trim().isEmpty()) {
-                clientName = "Guest" + clientSocket.getPort(); // Fallback name
-            }
-            System.out.println(clientName + " has joined the chat.");
-            broadcastMessage("SERVER: " + clientName + " has joined the chat.");
-
-            // 2. Add this handler to the list of active handlers
-            synchronized (clientHandlers) {
-                clientHandlers.add(this);
+            // 1. Ask client for their name and register it
+            while (true) {
+                out.println("SERVER: Enter your unique name:");
+                clientName = in.readLine();
+                if (clientName == null) {
+                    // Client disconnected before providing a name
+                    return;
+                }
+                clientName = clientName.trim();
+                if (clientName.isEmpty()) {
+                    out.println("SERVER: Name cannot be empty. Please try again.");
+                } else if (clientHandlers.containsKey(clientName)) {
+                    out.println("SERVER: Name '" + clientName + "' is already taken. Please choose another.");
+                } else {
+                    clientHandlers.put(clientName, this);
+                    System.out.println(clientName + " has joined the chat from " + clientSocket.getInetAddress().getHostAddress());
+                    sendMessage("SERVER: Welcome, " + clientName + "! Type 'list' to see online users. To send a message, use format 'RecipientName: Your message'. Type 'bye' to exit.");
+                    break;
+                }
             }
 
             String clientMessage;
-            // 3. Read messages from the client and broadcast them
+            // 2. Read messages from the client and process them
             while ((clientMessage = in.readLine()) != null) {
                 if (clientMessage.equalsIgnoreCase("bye")) {
                     break;
+                } else if (clientMessage.equalsIgnoreCase("list")) {
+                    listOnlineUsers();
+                } else if (clientMessage.contains(":")) {
+                    int colonIndex = clientMessage.indexOf(":");
+                    String recipientName = clientMessage.substring(0, colonIndex).trim();
+                    String messageContent = clientMessage.substring(colonIndex + 1).trim();
+
+                    if (recipientName.isEmpty() || messageContent.isEmpty()) {
+                        sendMessage("SERVER: Invalid message format. Use 'RecipientName: Your message'.");
+                        continue;
+                    }
+
+                    ClientHandlerChat recipientHandler = clientHandlers.get(recipientName);
+                    if (recipientHandler != null) {
+                        recipientHandler.sendMessage(clientName + " (private): " + messageContent);
+                        sendMessage("SERVER: Message sent to " + recipientName + ".");
+                        System.out.println(clientName + " sent to " + recipientName + ": " + messageContent);
+                    } else {
+                        sendMessage("SERVER: User '" + recipientName + "' not found or offline.");
+                    }
+                } else {
+                    sendMessage("SERVER: Unknown command or invalid message format. Type 'list' or 'RecipientName: Your message'.");
                 }
-                System.out.println(clientName + ": " + clientMessage);
-                broadcastMessage(clientName + ": " + clientMessage);
             }
 
         } catch (IOException e) {
             System.err.println("Error handling client " + clientName + ": " + e.getMessage());
         } finally {
-            // 4. Clean up resources and remove from active handlers list
+            // 3. Clean up resources and remove from active handlers map
             try {
                 if (out != null) out.close();
                 if (in != null) in.close();
@@ -87,26 +114,26 @@ public class ClientHandlerChat implements Runnable {
             } catch (IOException e) {
                 System.err.println("Error closing resources for client " + clientName + ": " + e.getMessage());
             }
-            synchronized (clientHandlers) {
-                clientHandlers.remove(this);
+            if (clientName != null) {
+                clientHandlers.remove(clientName);
+                System.out.println(clientName + " has left the chat.");
             }
-            System.out.println(clientName + " has left the chat.");
-            broadcastMessage("SERVER: " + clientName + " has left the chat.");
         }
     }
 
     /**
-     * Broadcasts a message to all connected clients except the sender.
-     * @param message The message to broadcast.
+     * Sends a list of currently online users to this client.
      */
-    private void broadcastMessage(String message) {
-        synchronized (clientHandlers) {
-            for (ClientHandlerChat handler : clientHandlers) {
-                // Send to all clients except the sender (unless it's a server message)
-                if (handler != this || message.startsWith("SERVER:")) {
-                    handler.sendMessage(message);
-                }
+    private void listOnlineUsers() {
+        StringBuilder userList = new StringBuilder("SERVER: Online users: ");
+        boolean first = true;
+        for (String name : clientHandlers.keySet()) {
+            if (!first) {
+                userList.append(", ");
             }
+            userList.append(name);
+            first = false;
         }
+        sendMessage(userList.toString());
     }
 }

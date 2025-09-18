@@ -8,13 +8,13 @@ import java.util.Scanner;
 /**
  * ChatClient.java
  * This class implements a client for the multi-user chat application. It connects to the
- * `ChatServer`, allows the user to enter a name, send messages, and receive messages
- * from other participants in the chat.
+ * `ChatServer`, allows the user to enter a name, send messages to specific recipients,
+ * and receive messages from other participants in the chat.
  *
  * Design Principles:
  * - **Modularity:** Encapsulates client-side chat logic.
  * - **Resource Management:** Ensures proper closing of sockets and streams.
- * - **User Interaction:** Provides a command-line interface for chat.
+ * - **User Interaction:** Provides a command-line interface for chat, including sending direct messages.
  * - **Concurrency:** Uses a separate thread to continuously read server messages,
  *   allowing the main thread to handle user input for sending messages.
  * - **Robustness:** Handles server disconnections and I/O errors.
@@ -23,8 +23,9 @@ import java.util.Scanner;
  * 1. Compile: `javac ChatClient.java`
  * 2. Run: `java ChatClient`
  *    The client will connect to `localhost` on port 12345.
- *    You will be prompted to enter your name, then you can start sending messages.
- *    Type 'bye' to leave the chat.
+ *    You will be prompted to enter your name. Then you can start sending messages.
+ *    To send a message to a specific user, use the format: `RecipientName: Your message`.
+ *    Type 'list' to see online users. Type 'bye' to leave the chat.
  */
 public class ChatClient {
     private static final String SERVER_ADDRESS = "localhost";
@@ -58,6 +59,22 @@ public class ChatClient {
                 }
             });
             readThread.start();
+
+            // Handle initial name registration with the server
+            String serverPrompt;
+            while ((serverPrompt = in.readLine()) != null) {
+                System.out.println(serverPrompt);
+                if (serverPrompt.startsWith("SERVER: Enter your unique name:")) {
+                    String clientName = scanner.nextLine();
+                    out.println(clientName);
+                } else if (serverPrompt.startsWith("SERVER: Welcome,")) {
+                    break; // Name successfully registered
+                } else if (serverPrompt.startsWith("SERVER: Name ") && serverPrompt.contains("is already taken")) {
+                    // Loop continues, client will be prompted again
+                } else if (serverPrompt.startsWith("SERVER: Name cannot be empty")) {
+                    // Loop continues, client will be prompted again
+                }
+            }
 
             // Main thread to send messages to the server
             String messageToSend;
