@@ -49,6 +49,13 @@ Here's a list of the main project folders in this repository:
     *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/simpleclient_server_without_thread/improved_implementation) - A basic client-server application without multithreading with improved code and comments.
 *   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/Threading)
     *   [Improved Implementation](https://github.com/hridoy100/Java-Networking/tree/master/Threading/improved_implementation) - Examples demonstrating various Java threading concepts with improved code and comments.
+*   [Thread-Pooling](https://github.com/hridoy100/Java-Networking/tree/master/Thread-Pooling)
+    *   [Beginner, Intermediate, Expert](https://github.com/hridoy100/Java-Networking/tree/master/Thread-Pooling) - Examples demonstrating thread pooling concepts from beginner to expert level.
+*   [1. Step-by-step-learning](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning)
+    *   [Simple Client/Server](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.1_SimpleClientServer) - Basic client-server communication.
+    *   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.2_Threading) - Multi-threaded server handling multiple clients.
+    *   [Synchronization](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.3_Synchronization) - Demonstrates thread synchronization with shared resources.
+    *   [Multi-User Chat Application](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.4_ChatApplication) - A complete multi-user chat application.
 
 ## Projects
 
