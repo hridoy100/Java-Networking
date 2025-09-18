@@ -56,6 +56,7 @@ Here's a list of the main project folders in this repository:
     *   [Threading](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.2_Threading) - Multi-threaded server handling multiple clients.
     *   [Synchronization](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.3_Synchronization) - Demonstrates thread synchronization with shared resources.
     *   [Multi-User Chat Application](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.4_ChatApplication) - A complete multi-user chat application.
+    *   [Secured Chat Application](https://github.com/hridoy100/Java-Networking/tree/master/1.%20Step-by-step-learning/1.5_SecuredChatApplication) - A multi-user chat application secured with SSL/TLS.
 
 ## Projects
 
