@@ -11,7 +11,7 @@ This repository contains a collection of Java networking projects, ranging from 
 
 The repository is organized into several directories, each demonstrating a specific concept or a complete application.
 
--   **`1. Step-by-step-learning`**: A guided progression through core networking topics.
+-   **`-New-Step-by-step-learning`**: A guided progression through core networking topics.
     -   `1.1_SimpleClientServer`: Basic client-server communication.
     -   `1.2_Threading`: Handling multiple clients with a multi-threaded server.
     -   `1.3_Synchronization`: Demonstrating thread synchronization with shared resources.
@@ -33,7 +33,7 @@ The projects in this repository are built using standard Java and can be compile
 1.  **Navigate to a project's source directory.**
     For example, to run the simple client-server project:
     ```bash
-    cd "1. Step-by-step-learning/1.1_SimpleClientServer"
+    cd "-New-Step-by-step-learning/1.1_SimpleClientServer"
     ```
 
 2.  **Compile the Java files.**
