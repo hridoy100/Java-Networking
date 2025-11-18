@@ -4,8 +4,9 @@
 
 This repository contains a collection of Java networking projects, ranging from simple client-server applications to more complex examples involving multithreading, synchronization, and secure communication. It serves as a practical guide for learning and implementing networking concepts in Java.
 
-<img src="star.png" height="200">
-
+<p align="center">
+    <img src="star.png" height="200">
+</p>
 
 ## 📂 Project Structure
 
