@@ -1,8 +1,10 @@
-# Java Networking Playground
+# Java Networking For Beginners
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains a collection of Java networking projects, ranging from simple client-server applications to more complex examples involving multithreading, synchronization, and secure communication. It serves as a practical guide for learning and implementing networking concepts in Java.
+
+## Repo Link: [Java-Networking Git](https://github.com/hridoy100/Java-Networking.git)
 
 <p align="center">
     <img src="star.png" height="200">
